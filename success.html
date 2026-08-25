@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - NexMart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .success-card {
+      max-width: 600px;
+      margin: 4rem auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+    }
+    .success-check-icon {
+      width: 88px;
+      height: 88px;
+      background: var(--color-success-soft);
+      color: var(--color-success);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="container header-wrapper">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          Nex<span class="accent">Mart</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUCCESS MAIN CONTAINER -->
+  <main class="container">
+    <div class="success-card">
+      <div class="success-check-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: var(--color-text-main); margin-bottom: 0.5rem;">Order Placed Successfully!</h1>
+      <p style="font-size: 1rem; color: var(--color-text-muted); margin-bottom: 2rem;">
+        Thank you for your purchase. We have received your order and are preparing it for shipment.
+      </p>
+
+      <div style="background: var(--color-bg); padding: 1.25rem; border-radius: var(--radius-md); text-align: left; margin-bottom: 2rem; border: 1px solid var(--color-border);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem;">
+          <span style="color: var(--color-text-muted);">Order Reference Number:</span>
+          <strong id="display-order-id">NEX-984210</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem;">
+          <span style="color: var(--color-text-muted);">Estimated Delivery:</span>
+          <strong style="color: var(--color-success);" id="display-delivery-eta">Tomorrow by 8:00 PM</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+          <span style="color: var(--color-text-muted);">Confirmation Sent To:</span>
+          <strong id="display-user-email">rahul.sharma@example.com</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="account.html" class="btn btn-primary btn-lg">Track Order in Account</a>
+        <a href="products.html" class="btn btn-outline btn-lg">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 NexMart Marketplace Inc. All rights reserved.</div>
+        <div>Designed with precision & performance in India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const orderId = Utils.getQueryParam("orderId") || "NEX-" + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById("display-order-id").textContent = orderId;
+
+      const user = Store.getUser();
+      if (user && user.email) {
+        document.getElementById("display-user-email").textContent = user.email;
+      }
+    });
+  </script>
+</body>
+</html>

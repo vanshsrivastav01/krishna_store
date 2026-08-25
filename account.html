@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Dashboard - NexMart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .account-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      margin: 2.5rem 0 4rem 0;
+    }
+    .account-nav {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .account-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+      border-bottom: 1px solid var(--color-bg);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .account-nav-item:hover, .account-nav-item.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-left: 4px solid var(--color-primary);
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-card {
+      background: var(--color-surface);
+      width: 100%;
+      max-width: 480px;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="container header-wrapper">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          Nex<span class="accent">Mart</span>
+        </a>
+
+        <div class="header-search">
+          <div class="search-input-group">
+            <input type="text" id="header-search-input" class="search-input" placeholder="Search for products, brands and categories..." autocomplete="off">
+            <button class="btn-search" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </div>
+          <div id="search-suggestions" class="search-suggestions-popup"></div>
+        </div>
+
+        <div class="header-actions">
+          <a href="account.html" class="header-action-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="header-action-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span>Wishlist</span>
+            <span class="badge wishlist-count-badge" style="display: none;">0</span>
+          </a>
+          <a href="cart.html" class="header-action-btn cart-btn-desktop">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span>Cart</span>
+            <span class="badge cart-count-badge" style="display: none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ACCOUNT DASHBOARD -->
+  <main class="container">
+    <div class="account-layout">
+      <!-- SIDEBAR NAV -->
+      <aside class="account-nav">
+        <div style="padding: 1.5rem; text-align: center; border-bottom: 1px solid var(--color-border);">
+          <img id="account-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Profile" style="width: 72px; height: 72px; border-radius: var(--radius-full); object-fit: cover; margin: 0 auto 0.75rem auto; border: 3px solid var(--color-primary-light);">
+          <h3 id="account-user-name" style="font-size: 1.125rem; font-weight: 800;">Rahul Sharma</h3>
+          <p id="account-user-email" style="font-size: 0.8125rem; color: var(--color-text-muted);">rahul.sharma@example.com</p>
+        </div>
+        <div class="account-nav-item active" data-tab="profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>My Profile</span>
+        </div>
+        <div class="account-nav-item" data-tab="orders">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          <span>My Orders</span>
+        </div>
+        <a href="wishlist.html" class="account-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span>Saved Wishlist</span>
+        </a>
+        <div class="account-nav-item" data-tab="addresses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Saved Addresses</span>
+        </div>
+        <div class="account-nav-item" onclick="handleUserLogout()" style="color: var(--color-danger);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </div>
+      </aside>
+
+      <!-- CONTENT PANELS -->
+      <section>
+        <!-- PROFILE TAB -->
+        <div id="tab-profile" class="account-tab-content" style="background: var(--color-surface); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+            <h2 style="font-size: 1.5rem; font-weight: 800;">Personal Information</h2>
+            <button class="btn btn-outline btn-sm" onclick="openEditProfileModal()">Edit Profile</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;">Full Name</div>
+              <div style="font-size: 1rem; font-weight: 700; color: var(--color-text-main);">Rahul Sharma</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;">Email Address</div>
+              <div id="account-user-email" style="font-size: 1rem; font-weight: 700; color: var(--color-text-main);">rahul.sharma@example.com</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;">Mobile Phone</div>
+              <div id="account-user-phone" style="font-size: 1rem; font-weight: 700; color: var(--color-text-main);">+91 98765 43210</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;">Account Status</div>
+              <span style="background: var(--color-success-soft); color: var(--color-success); font-weight: 700; font-size: 0.8125rem; padding: 0.2rem 0.6rem; border-radius: var(--radius-sm);">✔ Verified Member</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORDERS TAB -->
+        <div id="tab-orders" class="account-tab-content" style="display: none;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">My Orders & Tracking</h2>
+          <div id="orders-list-container"></div>
+        </div>
+
+        <!-- ADDRESSES TAB -->
+        <div id="tab-addresses" class="account-tab-content" style="display: none; background: var(--color-surface); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">Saved Delivery Addresses</h2>
+          <div style="background: var(--color-bg); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 700;">Rahul Sharma (Home)</span>
+              <span style="background: var(--color-primary-light); color: var(--color-primary); font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: var(--radius-sm);">DEFAULT</span>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--color-text-muted);">Flat 402, Royal Palms Apartments, Outer Ring Road, Bengaluru, Karnataka - 560103</p>
+            <div style="font-size: 0.8125rem; font-weight: 600; margin-top: 0.5rem;">Phone: +91 98765 43210</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div id="edit-profile-modal" class="modal-overlay">
+    <div class="modal-card">
+      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem;">Edit Profile Information</h3>
+      <form onsubmit="saveEditedProfile(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="edit-name-input" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="edit-email-input" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="text" id="edit-phone-input" class="form-input" required>
+        </div>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" style="flex: 1;" onclick="closeModal('edit-profile-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 NexMart Marketplace Inc. All rights reserved.</div>
+        <div>Designed with precision & performance in India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span>Home</span></a>
+    <a href="products.html" class="mobile-nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span>Search</span></a>
+    <a href="wishlist.html" class="mobile-nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span>Wishlist</span></a>
+    <a href="cart.html" class="mobile-nav-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span>Cart</span></a>
+    <a href="account.html" class="mobile-nav-item active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Account</span></a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/account-page.js"></script>
+</body>
+</html>

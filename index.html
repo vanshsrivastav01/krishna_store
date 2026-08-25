@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexMart - Premium Modern Online Marketplace</title>
+  <meta name="description" content="Discover top-quality electronics, mobiles, fashion, home essentials, appliances and books at incredible prices with fast delivery on NexMart.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div>🚀 FREE Express Delivery on orders above ₹999 | 100% Genuine Certified Products</div>
+      <div class="top-bar-links">
+        <a href="products.html?category=Electronics">Deals</a>
+        <a href="account.html">Track Order</a>
+        <a href="account.html">24/7 Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="main-header">
+      <div class="container header-wrapper">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo" aria-label="NexMart Home">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          Nex<span class="accent">Mart</span>
+        </a>
+
+        <!-- Live Autocomplete Search Bar -->
+        <div class="header-search">
+          <div class="search-input-group">
+            <input type="text" id="header-search-input" class="search-input" placeholder="Search for products, brands and categories..." autocomplete="off">
+            <button class="btn-search" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </div>
+          <div id="search-suggestions" class="search-suggestions-popup"></div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <a href="account.html" class="header-action-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Account</span>
+          </a>
+          <a href="wishlist.html" class="header-action-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span>Wishlist</span>
+            <span class="badge wishlist-count-badge" style="display: none;">0</span>
+          </a>
+          <a href="cart.html" class="header-action-btn cart-btn-desktop">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span>Cart</span>
+            <span class="badge cart-count-badge" style="display: none;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-wrapper container">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Great Indian Shopping Festival is Live
+          </div>
+          <h1 class="hero-title">
+            Everything You Love. <br>
+            <span class="highlight">Delivered Better.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Discover top-tier electronics, smartphones, fashion, and home appliances with incredible discounts, verified seller warranty, and 24-hour delivery.
+          </p>
+          <div class="hero-actions">
+            <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+            <a href="products.html?sort=discount" class="btn btn-outline btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.3);">Explore Deals</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Featured Sony Premium Audio Headphones">
+        </div>
+      </div>
+    </section>
+
+    <!-- HORIZONTAL CATEGORY SCROLL -->
+    <section class="category-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Explore Categories</h2>
+          <p class="section-subtitle">Find what you need by browsing top categories</p>
+        </div>
+      </div>
+      <div id="homepage-category-scroll" class="category-scroll-container">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- TRENDING NOW SECTION -->
+    <section style="margin-bottom: 3.5rem;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Trending Now 🔥</h2>
+          <p class="section-subtitle">Top rated products customers are loving this week</p>
+        </div>
+        <a href="products.html" class="section-link">View All Products →</a>
+      </div>
+      <div id="trending-products-grid" class="products-grid">
+        <!-- Rendered dynamically with Skeletons -->
+      </div>
+    </section>
+
+    <!-- TODAY'S DEALS SECTION -->
+    <section style="margin-bottom: 3.5rem; background: #FFF; padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+      <div class="section-header">
+        <div style="display: flex; align-items: center; gap: 1.5rem;">
+          <div>
+            <h2 class="section-title" style="color: var(--color-accent);">Today's Lightning Deals ⚡</h2>
+            <p class="section-subtitle">Massive discounts ending soon. Grab them before stock runs out!</p>
+          </div>
+          <div style="background: var(--color-accent-light); color: var(--color-accent); font-weight: 800; font-size: 0.9375rem; padding: 0.5rem 1rem; border-radius: var(--radius-full); border: 1px solid rgba(249, 115, 22, 0.2);">
+            Ends in: <span id="deal-timer">00h : 00m : 00s</span>
+          </div>
+        </div>
+        <a href="products.html?sort=discount" class="section-link">All Deals →</a>
+      </div>
+      <div id="deals-products-grid" class="products-grid" style="margin-bottom: 0;">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- RECENTLY VIEWED SECTION -->
+    <section id="recently-viewed-section" style="display: none; margin-bottom: 3.5rem;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Recently Viewed 🕒</h2>
+          <p class="section-subtitle">Pick up right where you left off</p>
+        </div>
+      </div>
+      <div id="recently-viewed-grid" class="products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TRUST STRIP -->
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="trust-text">
+          <h4>100% Secure Payments</h4>
+          <p>Encrypted SSL & Trusted Gateways</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+        <div class="trust-text">
+          <h4>Fast Express Delivery</h4>
+          <p>Free delivery on orders > ₹999</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+        </div>
+        <div class="trust-text">
+          <h4>Easy 7-Day Returns</h4>
+          <p>Hassle-free replacement policy</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <div class="trust-text">
+          <h4>24/7 Customer Support</h4>
+          <p>Dedicated helpline & instant chat</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-brand">Nex<span style="color: var(--color-accent);">Mart</span></h3>
+          <p style="margin-bottom: 1.25rem; font-size: 0.875rem;">
+            India's most trusted modern shopping destination for genuine electronics, high fashion, mobiles, home products, and everyday essentials.
+          </p>
+          <div style="display: flex; gap: 1rem;">
+            <!-- Social links -->
+            <a href="#" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>About NexMart</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press & Media</a></li>
+            <li><a href="#">NexMart Stories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#">Payments</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Cancellation & Returns</a></li>
+            <li><a href="#">FAQ & Help Center</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Policy</h4>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 NexMart Marketplace Inc. All rights reserved.</div>
+        <div>Designed with precision & performance in India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="mobile-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Search</span>
+    </a>
+    <a href="wishlist.html" class="mobile-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      <span>Wishlist</span>
+      <span class="badge wishlist-count-badge" style="display: none;">0</span>
+    </a>
+    <a href="cart.html" class="mobile-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <span>Cart</span>
+      <span class="badge cart-count-badge" style="display: none;">0</span>
+    </a>
+    <a href="account.html" class="mobile-nav-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <!-- SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
